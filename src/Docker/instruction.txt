@@ -1,0 +1,21 @@
+run run.sh
+
+or
+
+docker build -t my_c_project -f test_build/Dockerfile .
+docker run -p 8000:8000 -it my_c_project
+
+or
+
+docker rmi -f my_c_project
+docker build -t my_c_project -f test_build/Dockerfile .
+docker run -p 8000:8000 --rm -it my_c_project
+
+
+for mac can try docker run -v /var/run/docker.sock:/var/run/docker.sock -p 8000:8000 -it my_c_project
+
+
+open ur browser and go to
+http://localhost:8000
+
+! dont make ctrl + c in ur console b4 u stop testing

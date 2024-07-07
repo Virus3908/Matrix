@@ -1,0 +1,33 @@
+#suite Create_and_remove
+
+#test s21_create_matrix_11
+  // success creation
+  matrix_t A ;
+  ck_assert_int_eq(s21_create_matrix(5, 5, &A), OK);
+  s21_remove_matrix(&A);
+
+
+#test s21_create_matrix_12
+  // failure null pointer
+  ck_assert_int_eq(s21_create_matrix(5, 5, NULL), ERROR_MATRIX);
+
+
+#test s21_create_matrix_13
+  // failure incorrect rows/columns
+  matrix_t A ;
+  ck_assert_int_eq(s21_create_matrix(5, 0, &A), ERROR_MATRIX);
+
+
+#test s21_remove_matrix_14
+  // success remove
+  matrix_t A ;
+  s21_create_matrix(5, 5, &A);
+  s21_remove_matrix(&A);
+  ck_assert_ptr_null(A.matrix);
+  
+
+
+#test s21_remove_matrix_15
+  // failure handle null pointer
+  s21_remove_matrix(NULL);
+  ck_assert_int_eq(1, 1);
